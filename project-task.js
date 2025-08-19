@@ -44,6 +44,14 @@ Step-by-Step:
 3. Return the filtered result.
 */
 
+function filterProducts(arr, operation){
+  return operation(arr);
+}
+function inStockProducts(arr){
+  return arr.filter((product) => product.inStock === true);
+};
+console.log(inStockProducts(products));
+
 
 /*
 🔹 Task 2: Transform Product Names
