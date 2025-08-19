@@ -44,13 +44,21 @@ Step-by-Step:
 3. Return the filtered result.
 */
 
-function filterProducts(arr, operation){
-  return operation(arr);
+// FIRST SOLUTION
+function filterProducts(arr, callback){
+  return arr.filter(callback);
 }
-function inStockProducts(arr){
-  return arr.filter((product) => product.inStock === true);
-};
-console.log(inStockProducts(products));
+let availableItems = filterProducts(products, (product) => product.inStock === true);
+
+
+// SECOND SOLUTION
+// function filterProducts(arr, operation){
+//   return operation(arr);
+// }
+// function inStockProducts(arr){
+//   return arr.filter((product) => product.inStock === true);
+// };
+// console.log(inStockProducts(products));
 
 
 /*
@@ -63,6 +71,9 @@ Step-by-Step:
 2. Extract and transform the `name` property to uppercase.
 3. Store the result in a new variable.
 */
+
+let productsUpper = products.map((product) => (product.name.toUpperCase()));
+
 
 
 /*
@@ -77,6 +88,12 @@ Step-by-Step:
 2. Return a new function that takes a product object.
 3. Use this returned function inside a `map()` call to apply discounts to all products.
 */
+
+function applyDiscount(discountPercent, arr) {
+  return arr.map(product => product.price * (100 - discountPercent) / 100);
+}
+let discountedProducts = applyDiscount(10, products); // 10 percent discount
+// TODO: get function to return whole object instead of just prices
 
 
 /*
@@ -99,3 +116,6 @@ Step-by-Step:
 // console.log("Uppercased names:", ...);
 // console.log("Discounted products:", ...);
 // console.log("Total value in stock:", ...);
+console.log("Available items: ", availableItems);
+console.log("Name now uppercase: ", productsUpper);
+console.log("Discounted products: ", discountedProducts);
